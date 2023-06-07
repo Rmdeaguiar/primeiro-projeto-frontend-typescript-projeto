@@ -1,11 +1,36 @@
 import './styles.css';
 import Header from '../../components/Header';
+import TeacherCard from '../../components/TeacherCard';
+import api from '../../services/api';
+import { useState, useEffect } from 'react'
+import Teacher from '../../types/Teacher';
 
 function Main() {
+  const [allTeachers, setAllTeachers] = useState<Teacher[]>([]);
+
+  async function handleGetTeachers() {
+    try {
+      const response = await api.get('/teachers');
+      setAllTeachers([...response.data]);
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    handleGetTeachers();
+  }, [])
+
   return (
     <div className='container'>
-      <Header/> 
-   </div>
+      <Header />
+      <div className='teachers-list'>
+        {allTeachers.map((teacher) => (
+          <TeacherCard key={teacher.id} teacher={teacher} />
+        ))}
+      </div>
+    </div>
   );
 }
 

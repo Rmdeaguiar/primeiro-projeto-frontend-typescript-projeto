@@ -1,0 +1,10 @@
+.teachers-list{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 64px;
+}
