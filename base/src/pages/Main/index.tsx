@@ -1,10 +1,11 @@
 import './styles.css';
+import Header from '../../components/Header';
 
 function Main() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <div className='container'>
+      <Header/> 
+   </div>
   );
 }
 
